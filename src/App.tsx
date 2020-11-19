@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Axios from 'axios';
 
 function App() {
+  const load = async () => {
+    const { data } = await Axios.get('/.netlify/functions/hello');
+    console.log(data);
+  };
+
+  useEffect(() => {
+    load();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
